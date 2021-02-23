@@ -47,9 +47,7 @@
 
 * [ ] Sufficient clearance to potential aggressors
 * [ ] Length matched if required
-* [ ] Minimize crossing reference plane splits/slots or changing layers, use
-caps/stitching vias if unavoidable (generally OK if there are multiple parallel
-planes as long as only one is slotted)
+* [ ] Minimize crossing reference plane splits/slots or changing layers, use caps/stitching vias if unavoidable (generally OK if there are multiple parallel planes as long as only one is slotted)
 * [ ] Confirm fab can do copper to edge of PCB for edge launch connectors
 * [ ] Double-check pad width on connectors and add plane cutouts if needed to minimize impedance discontinuities (check with TDR to confirm)
 * [ ] Make sure you have enough mounting holes for ground integrity
@@ -63,8 +61,7 @@ planes as long as only one is slotted)
 * [ ] Guard ring / EMI cages provided if needed
 * [ ] Physically separated from high current SMPS or other noise sources
 * [ ] Never route analogue traces over a digital power pour without a featureless ground plane in between.  Not even vias.
-* [ ] Consider microphone effect on MLCCs if
-near strong sound sources
+* [ ] Consider microphone effect on MLCCs if near strong sound sources
 * [ ] Lay out high-gain amplifiers in a line, keeping the input and output far apart.
 * [ ] Put slots under resistors >10M to allow cleaning to control leakage and 1/f noise
 
@@ -74,8 +71,7 @@ near strong sound sources
 * [ ] LEDs, buttons, and other UI elements on outward-facing side of board
 * [ ] Keep-outs around PCB perimeter, card guides, panelization mouse-bites, etc respected
 * [ ] In the fab notes, specify that panelizing tabs shall not be placed under overhanging components (e.g. connectors)
-* [ ] Stress-sensitive components (MLCC) sufficiently clear from V-score or mouse bite locations, and oriented to reduce
-bending stress
+* [ ] Stress-sensitive components (MLCC) sufficiently clear from V-score or mouse bite locations, and oriented to reduce bending stress
 * [ ] Clearance around large ICs for heatsinks/fans if required
 * [ ] Clearance around pluggable connectors for mating cable/connector and technician's fingers
 * [ ] Clearance around mounting holes for screws

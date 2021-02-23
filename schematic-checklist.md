@@ -12,6 +12,7 @@
 * [ ] Check for net names that look the same but aren't (+5 _vs._ +5V _vs._ VDD)
 * [ ] Check for cut-and-paste errors such as wrongly duplicated net names
 * [ ] Check connector pin numbers against their destination---e.g. FFC connectors generally don't connect straight through
+* [ ] Review errata for each component and adjust schematics accordingly
 
 ## Passive components
 * [ ] Power/voltage/tolerance ratings specified as required
