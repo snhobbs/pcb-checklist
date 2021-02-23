@@ -72,8 +72,7 @@ same gain across the whole range.
 * [ ] Verify polarity of feedback loops
 
 ### Fast Analog
-* [ ] All transistors faster than 1 GHz have a base/gate stopper (usually just
-an 0402 or 0603 footprint, initially a zero-ohm jumper)
+* [ ] All transistors faster than 1 GHz have a base/gate stopper (usually just an 0402 or 0603 footprint, initially a zero-ohm jumper)
 * [ ] With microwave transistors and other super fast things, bypass using a top-side ground pour with heavy via stitching to ground, and multiple parallelled 0402 capacitors.
 
 
@@ -87,6 +86,7 @@ an 0402 or 0603 footprint, initially a zero-ohm jumper)
     * [ ] If possible, create dummy design with all clocks and other key signals and verify it P&R's properly
 
 ### Strap/init pins
+
 * [ ] Pullup/pulldowns on all signals that need defined state at boot
 * [ ] Strap pins connected to correct rail for desired state
 * [ ] JTAG/ICSP connector provided for all programmable devices
