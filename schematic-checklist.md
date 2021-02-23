@@ -2,12 +2,16 @@
 
 ## General
 
-* [ ] CAD ERC 100% clean. If some errors are invalid due to toolchain quirks, each exception must be inspected and signed
-off as invalid.
+* [ ] CAD ERC 100% clean. If some errors are invalid due to toolchain quirks, each exception must be inspected and signed off as invalid.
 * [ ] Verify pin numbers of all schematic symbols against datasheet or external interface specification document (if not yet board proven).
 * [ ] Schematic symbol matches chosen component package
 * [ ] Thermal pads are connected to correct power rail (may not always be ground)
 * [ ] Debug interfaces are not power gated in sleep mode
+* [ ] Power supplies are the right way up
+* [ ] All enable and output control pins are connected appropriately
+* [ ] Check for net names that look the same but aren't (+5 _vs._ +5V _vs._ VDD)
+* [ ] Check for cut-and-paste errors such as wrongly duplicated net names
+* [ ] Check connector pin numbers against their destination---e.g. FFC connectors generally don't connect straight through
 
 ## Passive components
 * [ ] Power/voltage/tolerance ratings specified as required
@@ -18,8 +22,9 @@ off as invalid.
 
 ### System power input
 
-* [ ] Fusing and/or reverse voltage protection at system power inlet
+* [ ] Fusing and reverse voltage protection at system power inlet
 * [ ] Check total input capacitance and add inrush limiter if needed
+* [ ] Check _Q_ factors of _LC_ filters and add TVSes or resistors to manage ringing on sudden connect/disconnect
 
 ### Regulators
 
@@ -29,6 +34,10 @@ off as invalid.
 * [ ] Remote sense used on low voltage or high current rails
 * [ ] Linear regulators and voltage reference ICs are stable with selected output cap ESR
 * [ ] Confirm power rail sequencing against device datasheets
+* [ ] Check that all switching regulators have appropriate undervoltage lockout and soft start to prevent startup problems
+* [ ] Verify that there is enough input reservoir capacitance to prevent negative-resistance oscillations of switching regulators
+* [ ] Check the ESR of the output capacitor.  For switchers, use a large lossy capacitor in parallel with a slightly smaller ceramic or ALPO.
+* [ ] Schottky rectifier from each rail to ground to prevent damage if ground is lost
 
 ### Decoupling
 * [ ] Decoupling present for all ICs
@@ -60,7 +69,13 @@ off as invalid.
 * [ ] RC time constant for attenuators sane given ADC sampling frequency
 * [ ] Verify frequency response of RF components across entire operating range. Don't assume a "1-100 MHz" amplifier has the
 same gain across the whole range.
-* [ ] Verify polarity of op-amp feedback
+* [ ] Verify polarity of feedback loops
+
+### Fast Analog
+* [ ] All transistors faster than 1 GHz have a base/gate stopper (usually just
+an 0402 or 0603 footprint, initially a zero-ohm jumper)
+* [ ] With microwave transistors and other super fast things, bypass using a top-side ground pour with heavy via stitching to ground, and multiple parallelled 0402 capacitors.
+
 
 ### Clocks
 
@@ -82,14 +97,16 @@ same gain across the whole range.
 
 * [ ] Power outputs (USB etc) current limited
 * [ ] ESD protection on data lines going off board
+* [ ] No off-board wiring going straight to silicon except TVSes
 
 ### Debugging / reworkability
 
-* [ ] Use 0-ohm resistors vs direct hard-wiring for strap pins when possible
+* [ ] Use 0-ohm resistors or solder blob pads vs direct hard-wiring for strap pins when possible
 * [ ] Provide multiple ground clips/points for scope probes
 * [ ] Dedicated ground in close proximity to analog test points
-* [ ] Test points on all power rails
+* [ ] Test points on all power rails, ahead of solder blob pads for bringup
 * [ ] Test points on interesting signals which may need probing for bringup/debug
+* [ ] U.FL connectors with 450 / 950 ohm series resistors for 10X/20X probing of fast signals
 
 ## Thermal
 

@@ -9,6 +9,9 @@
 
 * [ ] Decoupling caps as close to power pins as possible
 * [ ] Low inductance mounting used for decoupling (prefer ViP if available, otherwise "[]8" shaped side vias
+* [ ] Route bypasses and ferrite beads first
+* [ ] Route supply traces _through_ the pads of decoupling caps and circuit protectors (no pigtails)
+
 
 ## DFM / yield enhancement
 
@@ -44,9 +47,13 @@
 
 * [ ] Sufficient clearance to potential aggressors
 * [ ] Length matched if required
-* [ ] Minimize crossing reference plane splits/slots or changing layers, use caps/stitching vias if unavoidable
+* [ ] Minimize crossing reference plane splits/slots or changing layers, use
+caps/stitching vias if unavoidable (generally OK if there are multiple parallel
+planes as long as only one is slotted)
 * [ ] Confirm fab can do copper to edge of PCB for edge launch connectors
-* [ ] Double-check pad width on connectors and add plane cutouts if needed to minimize impedance discontinuities
+* [ ] Double-check pad width on connectors and add plane cutouts if needed to minimize impedance discontinuities (check with TDR to confirm)
+* [ ] Make sure you have enough mounting holes for ground integrity
+
 
 ## Power
 * [ ] Minimal slots in planes from via antipads
@@ -55,26 +62,36 @@
 ## Sensitive analog
 * [ ] Guard ring / EMI cages provided if needed
 * [ ] Physically separated from high current SMPS or other noise sources
-* [ ] Consider microphone effect on MLCCs if near strong sound sources
+* [ ] Never route analogue traces over a digital power pour without a featureless ground plane in between.  Not even vias.
+* [ ] Consider microphone effect on MLCCs if
+near strong sound sources
+* [ ] Lay out high-gain amplifiers in a line, keeping the input and output far apart.
+* [ ] Put slots under resistors >10M to allow cleaning to control leakage and 1/f noise
 
 ## Mechanical
 * [ ] Confirm all connectors to other systems comply with the appropriate mechanical standard (connector orientation, key position, etc)
+* [ ] Check orientation and pullback of connectors, panel controls, and indicators
 * [ ] LEDs, buttons, and other UI elements on outward-facing side of board
 * [ ] Keep-outs around PCB perimeter, card guides, panelization mouse-bites, etc respected
+* [ ] In the fab notes, specify that panelizing tabs shall not be placed under overhanging components (e.g. connectors)
 * [ ] Stress-sensitive components (MLCC) sufficiently clear from V-score or mouse bite locations, and oriented to reduce
 bending stress
 * [ ] Clearance around large ICs for heatsinks/fans if required
-* [ ] Clearance around pluggable connectors for mating cable/connector
+* [ ] Clearance around pluggable connectors for mating cable/connector and technician's fingers
 * [ ] Clearance around mounting holes for screws
 * [ ] Plane keepouts and clearance provided for shielded connectors, magnetics, etc
 * [ ] Confirm PCB dimensions and mounting hole size/placement against enclosure or card rack design
 * [ ] Verify mounting hole connection/isolation
 * [ ] Components not physically overlapping/colliding
 * [ ] Clearance provided around solder-in test points for probe tips
+* [ ] Components not too tall to fit under shields
+* [ ] Identify box constraints on placement of connectors, controls, and indicators.
+* [ ] Check that the board position is not overconstrained---which side of the box will determine the board position? Are there bulkhead connectors on more than one face of the box?
 
 ## Thermal
 
-* [ ] Thermal reliefs used for plane connections (unless via is used for heatsinking)
+* [ ] Check area and connectivity of thermal pours.  Is there enough via stitching?
+* [ ] Thermal reliefs used for plane connections of through-hole components (unless via is used for heatsinking)
 * [ ] Solid connections used to planes if heatsinking
 * [ ] Ensure thermal balance on SMT chip components to minimize risk of tombstoning
 
@@ -89,6 +106,7 @@ bending stress
 
 * [ ] Confirm SMD vs NSMD pad geometry
 * [ ] Adequate clearance around pads (typ. 50 um)
+* [ ] Verify that the board house won't expand the mask apertures too much
 
 ## Silkscreen
 
@@ -99,6 +117,9 @@ bending stress
 * [ ] Silkscreen box provided for writing/sticking serial number
 * [ ] Text mirrored properly on bottom layer
 * [ ] Test points labeled if space permits
+* [ ] No silk screen close to high-Z DC nodes (it's mildly conductive)
+* [ ] Make sure Pin 1 marks are obvious and not covered by the package
+* [ ] Check polarity markings
 
 ## Flex specific
 * [ ] Components oriented to reduce bending forces
