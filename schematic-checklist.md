@@ -9,6 +9,7 @@
 * [ ] Debug interfaces are not power gated in sleep mode
 * [ ] Power supplies are the right way up
 * [ ] All enable and output control pins are connected appropriately
+* [ ] All nets except for nets going from one passive to one other passive must be intelligently named.
 * [ ] Check for net names that look the same but aren't (+5 _vs._ +5V _vs._ VDD)
 * [ ] Check for cut-and-paste errors such as wrongly duplicated net names
 * [ ] Check connector pin numbers against their destination---e.g. FFC connectors generally don't connect straight through
