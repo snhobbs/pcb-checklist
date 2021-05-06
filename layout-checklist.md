@@ -27,6 +27,7 @@
 * [ ] Fiducial pattern asymmetric to detect rotated or flipped boards
 * [ ] Soldermask/copper clearance on fiducials respected
 * [ ] Panelization specified if required
+* [ ] Copper balance should be roughly equivilent over layers. Avoid having large pours all on the bottom or all on the top as the strain can bend the board. Copper pours should be closer to the middle of the board if possible and roughly mirrored on the opposing side of the board.
 
 ## Footprints
 
